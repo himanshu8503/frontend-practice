@@ -56,6 +56,7 @@ header a{
     max-width: 80%;
     left: 50%;
     transform: translateX(-50%);
+    padding-right: 30%;
     box-sizing: border-box;
     color: #fff;
     text-shadow: 0 5px 10px #0004;   
@@ -134,7 +135,7 @@ header a{
 }
 
 .thumbnail .items .content .title{
-    font-weight: 500;
+    font-weight: bold;
 }
 .thumbnail .items .content .description{
     font-weight: 300;
@@ -266,6 +267,55 @@ header a{
     z-index: 2;
 }
 
+.carousel.prev .list .items img{
+    z-index: 100;
+}
+
+.carousel.prev .list .items:nth-child(2) img{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    animation: outframe 0.5s linear 1 forwards;
+}
+
+@keyframes outframe {
+    to{
+        width: 150px;
+        height: 220px;
+        bottom: 50px;
+        left: 50%;
+        border-radius: 30px;
+    }
+}
+
+.carousel.prev .thubnails .thubnails-items:nth-child(1){
+    overflow: hidden;
+    opacity: 0;
+    animation: showthumbnail .5s linear 1 forwards;
+}
+
+.carousel.prev .list .items:nth-child(2) .content .author,
+.carousel.prev .list .items:nth-child(2) .content .title,
+.carousel.prev .list .items:nth-child(2) .content .topic,
+.carousel.prev .list .items:nth-child(2) .content .des,
+.carousel.prev .list .items:nth-child(2) .content .button{
+    animation: contentOut 1.5s linear 1 forwards;
+}
+
+@keyframes contentOut {
+    to{
+        transform: translateY(-150px);
+        filter: blur(20px);
+        opacity: 0;
+    }
+}
+
+.carousel.next .arrows button,
+.carousel.prev .arrows button{
+    pointer-events: none;
+}
+
+
 /* running time */
 
 .timer{
@@ -276,4 +326,26 @@ header a{
     background-color: #f1683a;
     left: 0;
     top: 0;
+}
+
+.carousel.next .timer,
+.carousel.prev .timer{
+    width: 100%;
+    animation: timeRunning 2s linear 1 forwards;
+}
+
+@keyframes timeRunning {
+    to{
+        width: 0;
+    }
+}
+
+@media screen and (max-width: 678px) {
+    .carousel .list .items .content{
+        padding-right: 0;
+    }
+
+    .carousel .list .items .content .title{
+        font-size: 30px;
+    }
 }
